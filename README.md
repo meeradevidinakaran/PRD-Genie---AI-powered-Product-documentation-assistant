@@ -103,52 +103,10 @@ PRD Genie employs a decoupled 5-tier architecture spanning Ingress, Deterministi
   [ Notion Engineering Backlog DB ]
 ```
 
-### Low-Level Execution Sequence (Mermaid LLD)
+### Workflow (Langflow Snapshot)
 
-```mermaid
-graph TD
-    subgraph Ingestion["1. Ingress & Payload Isolation"]
-        Poller["Notion Source Poller V4"] --> Transformer["Payload Transformer (Custom Component)"]
-    end
+<img width="1917" height="953" alt="Screenshot 2026-09-12 223837" src="https://github.com/user-attachments/assets/fb2177d5-dc88-4233-9dee-9bb97ac94e27" />
 
-    subgraph Extraction_Routing["2. Extraction & Deterministic Routing"]
-        Transformer --> Extractor["Requirement Extractor Agent (GPT-4o-mini)"]
-        Extractor --> Gate["Pipeline Decision Gate V4 (Python Rule Engine)"]
-        Gate --> Router{"If-Else Router (Contains: ROUTE_TO_PRD)"}
-    end
-
-    subgraph Route_A["3. Route A: PRD Synthesis & Quality Audit"]
-        Router -- "True" --> PRDGen["PRD Generator Agent (GPT-4o)"]
-        PRDGen --> StoryAgent["Story Breakdown Agent (GPT-4o)"]
-        PRDGen -. "PRD Payload" .-> Judge["LLM-as-a-Judge Node (Semantic Audit %)"]
-        StoryAgent -. "User Stories" .-> Judge
-        Judge --> PRDWriter["Notion PRD & Story Writer"]
-        PRDWriter --> StatusA["Notion Status Updater V4 (Status: Processed)"]
-        StatusA --> EngDB[("Notion Engineering Backlog DB")]
-    end
-
-    subgraph Route_B["4. Route B: Gap Analysis & Clarification"]
-        Router -- "False" --> GapAgent["Gap Analyzer Agent (GPT-4o-mini)"]
-        GapAgent --> GapWriter["Notion Gap Report Writer"]
-        GapWriter --> StatusB["Notion Status Updater V4 (Status: Gap Identified)"]
-        StatusB --> StakeDB[("Notion Stakeholder Alignment DB")]
-    end
-
-    subgraph Observability["5. Telemetry & Control"]
-        Extractor -. Traces .-> Langfuse[[Langfuse Observability Engine]]
-        PRDGen -. Traces .-> Langfuse
-        StoryAgent -. Traces .-> Langfuse
-        Judge -. Traces .-> Langfuse
-        GapAgent -. Traces .-> Langfuse
-    end
-
-    classDef decision fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
-    classDef routeA fill:#e8f5e9,stroke:#2e7d32,stroke-width:1.5px;
-    classDef routeB fill:#ffebee,stroke:#c62828,stroke-width:1.5px;
-    class Router decision;
-    class PRDGen,StoryAgent,PRDWriter,EngDB routeA;
-    class GapAgent,GapWriter,StakeDB routeB;
-```
 
 ---
 
