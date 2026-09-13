@@ -67,43 +67,12 @@ PRD Genie employs a decoupled 5-tier architecture spanning Ingress, Deterministi
 <img width="1917" height="845" alt="HLD_V2" src="https://github.com/user-attachments/assets/7461032e-27f1-425e-8c52-c49a8df370fd" />
 
 # Logical Workflow 
+<img width="911" height="622" alt="Screenshot 2026-09-13 122107" src="https://github.com/user-attachments/assets/ea3c28f5-ced7-4ead-8410-ece08f6b8f15" />
 
-[ Notion Ingestion Queue DB ]
-             │ (Row Status: "Pending")
-             ▼
- [ Notion Source Poller V4 ] ──► [ Payload Transformer ]
-                                          │
-                                          ▼
-                         [ Node 1: Requirement Extractor ] (GPT-4o-mini)
-                                          │
-                                          ▼
-                      [ Node 1.5: Pipeline Decision Gate V4 ]
-                                          │
-                  ┌───────────────────────┴───────────────────────┐
-                  ▼ (Route A: Clean)                              ▼ (Route B: Ambiguous/Contradiction)
-        [ Node 2: PRD Generator ]                       [ Node 2b: Gap Analyzer ] (GPT-4o-mini)
-               (GPT-4o)                                           │
-                  │                                               ▼
-                  ▼                                   [ Notion Gap Report Writer ]
-       [ Node 3: Story Breakdown ]                                │
-               (GPT-4o)                                           ▼
-                  │                                  [ Notion Status Updater V4 ]
-                  ├───────────────────────┐             (Status: "Gap Identified")
-                  ▼                       │                       │
-     [ Node 3.5: LLM-as-a-Judge ] ◄───────┘                       ▼
-     (Alignment Score & Audit %)                     [ Notion Stakeholder Alignment DB ]
-                  │
-                  ▼
-   [ Notion PRD & Story Writer ]
-                  │
-                  ▼
-     [ Notion Status Updater V4 ] (Status: "Processed")
-                  │
-                  ▼
-  [ Notion Engineering Backlog DB ]
+
 ```
 
-### Workflow (Langflow Snapshot)
+# Workflow (Langflow Snapshot)
 
 <img width="1917" height="953" alt="Screenshot 2026-09-12 223837" src="https://github.com/user-attachments/assets/fb2177d5-dc88-4233-9dee-9bb97ac94e27" />
 
