@@ -26,14 +26,10 @@
   
 - [Performance & Business ROI (KPIs)](#-performance--business-roi-kpis)
   
-- [Repository Structure](#-repository-structure)
-  
 - [Quick Start & Setup Guide](#-quick-start--setup-guide)
   
 - [Environment Variables Configuration](#-environment-variables-configuration)
   
-- [License & Attribution](#-license--attribution)
-
 ---
 
 ## Executive Summary
@@ -69,8 +65,6 @@ PRD Genie employs a decoupled 5-tier architecture spanning Ingress, Deterministi
 ## Logical Workflow 
 <img width="911" height="622" alt="Screenshot 2026-09-13 122107" src="https://github.com/user-attachments/assets/ea3c28f5-ced7-4ead-8410-ece08f6b8f15" />
 
-
-```
 
 ## Workflow (Langflow Snapshot)
 
@@ -119,3 +113,44 @@ PRD Genie employs a decoupled 5-tier architecture spanning Ingress, Deterministi
 | **Verbatim Technical Spec SLA**| 100% exact retention | **100% verbatim capture** (no metric rounding) | 🟢 PASS |
 | **Decision Gate Accuracy** | 100% deterministic | **100% routing accuracy** across test suite | 🟢 PASS |
 | **Story Alignment Score** | $\ge$ 90% average | **95.8% average alignment score** | 🟢 PASS |
+
+
+## 🚀 Quick Start & Setup Guide
+```
+### Prerequisites
+* **Python:** Version 3.10, 3.11, or 3.12
+* **Langflow:** Version 1.0.0 or higher (`pip install langflow`)
+* **API Keys:**
+  * OpenAI API Key (`sk-...`)
+  * Notion Integration Secret Token (`secret_...`)
+  * Langfuse Public & Secret Keys (Optional for tracing)
+
+
+### Step 1: Install Dependencies
+### Step 2: Configure Environment Variables
+### Step 3: Set Up Notion Workspace Databases
+Create three target databases in your Notion workspace and share them with your Notion Integration:
+1. **Ingestion Queue DB:** Properties: `Title` (Title), `Transcript` (Text), `Processing Status` (Text or Select: `Pending`, `Processed`).
+2. **Engineering Backlog DB:** Output database for PRDs and Agile stories.
+3. **Stakeholder Alignment DB:** Output database for Gap Reports.
+### Step 4: Launch Langflow & Import Flow
+
+## ⚙️ Environment Variables 
+
+# OpenAI API Credentials
+OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxx
+
+# Notion API Integration Credentials
+NOTION_SECRET_TOKEN=secret_xxxxxxxxxxxxxxxxxxxxxxxx
+
+# Langfuse Observability Tracing Credentials
+LANGFUSE_PUBLIC_KEY=pk-lf-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LANGFUSE_SECRET_KEY=sk-lf-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+LANGFUSE_HOST=https://cloud.langfuse.com
+```
+
+---
+
+<p align="center">
+  <i>Built using Langflow, OpenAI, and Notion API for NeuronForge Technologies.</i>
+</p>
