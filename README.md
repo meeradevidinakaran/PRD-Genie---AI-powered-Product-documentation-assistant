@@ -16,7 +16,7 @@
   
 - [Problem Statement & Business Impact](#-problem-statement--business-impact)
   
-- [System Architecture (HLD & LLD)](#-system-architecture-hld--lld)
+- [System Architecture](#-system-architecture)
   
 - [Key Features & Capabilities](#-key-features--capabilities)
   
@@ -59,20 +59,20 @@ Internal assessments at NeuronForge revealed critical software development lifec
 
 ---
 
-## 🏗️ System Architecture (HLD & LLD)
+## 🏗️ System Architecture 
 
 PRD Genie employs a decoupled 5-tier architecture spanning Ingress, Deterministic Routing, Multi-Agent Generation, Automated Quality Auditing, and Bidirectional Database Sync.
 
 ### High-Level Design (HLD)
 <img width="1917" height="845" alt="HLD_V2" src="https://github.com/user-attachments/assets/7461032e-27f1-425e-8c52-c49a8df370fd" />
 
-# Logical Workflow 
+## Logical Workflow 
 <img width="911" height="622" alt="Screenshot 2026-09-13 122107" src="https://github.com/user-attachments/assets/ea3c28f5-ced7-4ead-8410-ece08f6b8f15" />
 
 
 ```
 
-# Workflow (Langflow Snapshot)
+## Workflow (Langflow Snapshot)
 
 <img width="1917" height="953" alt="Screenshot 2026-09-12 223837" src="https://github.com/user-attachments/assets/fb2177d5-dc88-4233-9dee-9bb97ac94e27" />
 
