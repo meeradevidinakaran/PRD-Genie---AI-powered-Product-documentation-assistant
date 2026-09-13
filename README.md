@@ -114,7 +114,12 @@ PRD Genie employs a decoupled 5-tier architecture spanning Ingress, Deterministi
 | **Decision Gate Accuracy** | 100% deterministic | **100% routing accuracy** across test suite | 🟢 PASS |
 | **Story Alignment Score** | $\ge$ 90% average | **95.8% average alignment score** | 🟢 PASS |
 
+---
+## DEMO Video link
 
+⏺️ https://drive.google.com/file/d/1twO1ulWr0ztQ0yXWDRb4jZpM8uBDBJ4X/view?usp=drive_link
+
+---
 ## 🚀 Quick Start & Setup Guide
 ```
 ### Prerequisites
